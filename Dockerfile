@@ -1,13 +1,9 @@
 FROM node:9-alpine
 LABEL maintainer "Andy Savage"
 
-ENV NPM_CONFIG_LOGLEVEL error
 ENV TZ 'Asia/Hong_Kong'
-ENV NODE_ENV 'development'
 ENV WATCHMAN_VERSION '4.9.0'
 ENV WATCHMAN_REPO 'https://github.com/facebook/watchman.git'
-
-WORKDIR /app
 
 RUN apk update \
  && apk add --no-cache \
@@ -15,7 +11,6 @@ RUN apk update \
   linux-headers ca-certificates tzdata curl pcre-dev \
   file \
   libc6-compat \
-  nano \
   tini \
   bash \
  && cp "/usr/share/zoneinfo/${TZ}" /etc/localtime \
@@ -39,6 +34,7 @@ RUN apk del --purge \
  linux-headers ca-certificates \
  tzdata curl file \
 && rm -rf /var/cache/apk/ \
+&& mkdir -p /var/cache/apk/ \
 && rm -r /tmp/watchman-src
 
 ENTRYPOINT [ "/sbin/tini", "--" ]
