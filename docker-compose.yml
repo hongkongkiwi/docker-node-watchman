@@ -1,0 +1,5 @@
+version: '3.2'
+
+services:
+  watchman-dev:
+    image: hongkongkiwi/node-watchman-bee
