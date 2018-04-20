@@ -1,0 +1,17 @@
+testsubscriptions.json
+.npmignore
+.gitignore
+.git
+.env
+Dockerfile
+buildtest.sh
+config
+data
+test
+logs
+.DS_Store
+node_modules
+
+*/temp*
+*/*/temp*
+temp?
